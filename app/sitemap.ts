@@ -15,7 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Article pages
   const articlePages = articles.map((article: { url: string }) => ({
-    url: article.url,
+    url: article.url.replace(/&/g, "&amp;"),
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.6,
