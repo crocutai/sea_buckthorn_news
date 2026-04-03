@@ -13,6 +13,19 @@ export const metadata: Metadata = {
     title: seaBuckthornPage?.title || "什麼是沙棘",
     description: seaBuckthornPage?.description,
     type: "website",
+    locale: "zh_HK",
+    siteName: "沙棘x健康關注組",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: seaBuckthornPage?.title || "沙棘x健康關注組",
+    description: seaBuckthornPage?.description,
+  },
+  alternates: {
+    canonical: "/",
+  },
+  verification: {
+    google: 'google-site-verification=Jg_Rtj2OwYd6n_zbxSVICXpNMCfeethJyiXvjZE0NnE',
   },
 };
 

@@ -50,6 +50,30 @@ export const metadata: Metadata = {
     title: homePage?.title || "沙棘x健康關注組",
     description: homePage?.description,
     type: "website",
+    locale: "zh_HK",
+    siteName: "沙棘x健康關注組",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: homePage?.title || "沙棘x健康關注組",
+    description: homePage?.description,
+  },
+  alternates: {
+    canonical: "/",
+  },
+  verification: {
+    google: 'google-site-verification=Jg_Rtj2OwYd6n_zbxSVICXpNMCfeethJyiXvjZE0NnE',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 
