@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "./Header";
 import { Suspense } from "react";
+import { JsonLd, generateWebsiteSchema, generateOrganizationSchema } from "./components/JsonLd";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,6 +34,8 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#FFFAF5] dark:bg-[#2D1810]">
+        <JsonLd data={generateWebsiteSchema()} />
+        <JsonLd data={generateOrganizationSchema()} />
         <Suspense fallback={<div className="h-16 bg-white dark:bg-[#3D2418] border-b border-[#FFD4A3] dark:border-[#5C3D2E]" />}>
           <Header />
         </Suspense>

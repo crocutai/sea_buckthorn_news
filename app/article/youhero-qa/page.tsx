@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { JsonLd, generateArticleSchema, generateFAQSchema, generateBreadcrumbSchema } from "../../components/JsonLd";
 
 export const metadata: Metadata = {
   title: "沙棘x健康關注組 | 宇航人 Q&A | 公司篇與行業篇問答",
@@ -200,8 +201,30 @@ const industryQA = [
 ];
 
 export default function YouHeroQA() {
+  // 準備 FAQ 數據
+  const allQA = [...companyQA, ...industryQA].map(item => ({
+    question: item.q,
+    answer: item.a,
+  }));
+
+  // 麵包屑數據
+  const breadcrumbItems = [
+    { name: "首頁", url: "/" },
+    { name: "宇航人 Q&A", url: "/article/youhero-qa" },
+  ];
+
   return (
     <div className="flex flex-col flex-1 bg-[#FFFAF5] font-sans dark:bg-[#2D1810] min-h-screen">
+      {/* 結構化數據 */}
+      <JsonLd data={generateArticleSchema(
+        "宇航人 Q&A | 公司篇與行業篇問答",
+        "宇航人公司常見問題解答，包括公司歷史、榮譽認證、直銷牌照、會員制度等詳細資訊。",
+        "/article/youhero-qa",
+        "/youhero_cert1.jpg"
+      )} />
+      <JsonLd data={generateFAQSchema(allQA)} />
+      <JsonLd data={generateBreadcrumbSchema(breadcrumbItems)} />
+
       <main className="flex flex-1 w-full max-w-3xl mx-auto flex-col py-16 px-4 sm:px-8">
         <h1 className="text-3xl font-bold text-[#8B4513] dark:text-[#FFD4A3] mb-2">
           宇航人 Q&A
