@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- 沙棘果实图标 - 橙色圆形代表沙棘果 -->
+  <circle cx="50" cy="50" r="45" fill="#FF8C00"/>
+  <circle cx="50" cy="50" r="35" fill="#FFA500"/>
+  <!-- 叶子装饰 -->
+  <ellipse cx="25" cy="30" rx="12" ry="8" fill="#228B22" transform="rotate(-30 25 30)"/>
+  <ellipse cx="75" cy="30" rx="12" ry="8" fill="#228B22" transform="rotate(30 75 30)"/>
+  <!-- 高光效果 -->
+  <ellipse cx="40" cy="40" rx="15" ry="12" fill="#FFD700" opacity="0.6"/>
+</svg>

@@ -336,6 +336,17 @@ export const articles: Article[] = [
         category: "沙棘",
         url: "https://www.youtube.com/watch?v=gducWJ2hls8",
     },
+        {
+        og_title: "宇航人 Q&A | 公司篇與行業篇問答",
+        og_description: "宇航人公司常見問題解答，包括公司歷史、榮譽認證、直銷牌照、會員制度等詳細資訊。",
+        og_image: "/youhero_cert1.jpg",
+        type: Article_Type.SELF,
+        title: "宇航人 Q&A | 公司篇與行業篇問答",
+        content: "宇航人公司常見問題解答，包括公司歷史、榮譽認證、直銷牌照、會員制度等詳細資訊。",
+        tags: ["宇航人", "直销", "牌照", "模式", "本質直銷"],
+        category: "宇航人",
+        url: "/article/youhero-qa",
+    },
     {
         og_title: "宇航人宇航商城：回归直销本质 重塑行业规则",
         og_description: "从青涩到火红，一粒沙棘的周期是九个月。什么是一家企业不断穿越生命周期的“远点”？　　2024年，正值宇航人宇航商城成立六周年。2024年9月8日，伴随着宇航人的司歌《咱宇航的人》唱响，“遇见宇航，预见未来”宇航人集团宇航商城六周年庆典拉开了帷幕。来自全国各地的5000余位宇航商城伙伴们齐聚内蒙古体育馆，共庆宇航商城六岁“生日”。",

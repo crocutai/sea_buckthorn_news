@@ -148,15 +148,16 @@ export default async function Home({ searchParams }: HomeProps) {
                     key={`pair-${index}`}
                     className="flex flex-col gap-4 p-4 rounded-lg border border-[#FFD4A3] dark:border-[#5C3D2E] bg-white dark:bg-[#3D2418]"
                   >
-                    {item.map((article) => (
+                    {item.map((article) => {
+                      const isSelf = article.type === Article_Type.SELF;
+                      return (
                       <div
                         key={article.url}
                         className="group flex flex-col gap-2 flex-1 hover:bg-[#FFF5EB] dark:hover:bg-[#4A2A1E] p-2 rounded-md transition-colors"
                       >
                         <a
                           href={article.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                          {...(!isSelf && { target: "_blank", rel: "noopener noreferrer" })}
                           className="flex flex-col gap-2"
                         >
                           <h2 className="text-sm font-semibold text-[#8B4513] dark:text-[#FFD4A3] group-hover:text-[#FF8C00] dark:group-hover:text-[#FFA500] transition-colors line-clamp-2">
@@ -181,19 +182,19 @@ export default async function Home({ searchParams }: HomeProps) {
                         )}
                         <a
                           href={article.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                          {...(!isSelf && { target: "_blank", rel: "noopener noreferrer" })}
                           className="flex items-center justify-between mt-1"
                         >
                           <span className="text-xs text-[#CD853F] dark:text-[#D2B48C] truncate max-w-[120px]">
-                            {new URL(article.url).hostname}
+                            {isSelf ? "" : new URL(article.url).hostname}
                           </span>
                           <span className="text-xs text-[#FF8C00] dark:text-[#FFA500] font-medium">
                             →
                           </span>
                         </a>
                       </div>
-                    ))}
+                    );
+                    })}
                   </div>
                 );
               }
@@ -201,17 +202,17 @@ export default async function Home({ searchParams }: HomeProps) {
               // Single article (with media)
               const article = item;
               const isYouTube = article.type === Article_Type.YOUTUBE;
+              const isSelf = article.type === Article_Type.SELF;
               const videoId = isYouTube ? getYouTubeVideoId(article.url) : null;
 
               return (
                 <div
                   key={article.url}
-                  className={`group flex flex-col gap-3 p-4 rounded-lg border border-[#FFD4A3] dark:border-[#5C3D2E] bg-white dark:bg-[#3D2418] hover:border-[#FF8C00] dark:hover:border-[#FFA500] transition-colors ${isYouTube ? "sm:col-span-2" : ""}`}
+                  className={`group flex flex-col gap-3 p-4 rounded-lg border border-[#FFD4A3] dark:border-[#5C3D2E] bg-white dark:bg-[#3D2418] hover:border-[#FF8C00] dark:hover:border-[#FFA500] transition-colors ${isYouTube || isSelf ? "sm:col-span-2" : ""}`}
                 >
                   <a
                     href={article.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    {...(!isSelf && { target: "_blank", rel: "noopener noreferrer" })}
                     className="flex flex-col gap-4"
                   >
                     {isYouTube && videoId ? (
@@ -225,7 +226,7 @@ export default async function Home({ searchParams }: HomeProps) {
                         />
                       </div>
                     ) : article.og_image ? (
-                      <div className="relative w-full h-40 flex-shrink-0 rounded-md overflow-hidden bg-[#FFF0E0] dark:bg-[#5C3D2E]">
+                      <div className={`relative w-full flex-shrink-0 rounded-md overflow-hidden bg-[#FFF0E0] dark:bg-[#5C3D2E] ${isSelf ? "h-80" : "h-40"}`}>
                         <Image
                           src={article.og_image}
                           alt={article.title}
@@ -258,12 +259,11 @@ export default async function Home({ searchParams }: HomeProps) {
                   )}
                   <a
                     href={article.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    {...(!isSelf && { target: "_blank", rel: "noopener noreferrer" })}
                     className="flex items-center justify-between mt-auto"
                   >
                     <span className="text-xs text-[#CD853F] dark:text-[#D2B48C] truncate max-w-[200px]">
-                      {new URL(article.url).hostname}
+                      {isSelf ? "" : new URL(article.url).hostname}
                     </span>
                     <span className="text-xs text-[#FF8C00] dark:text-[#FFA500] flex items-center gap-1 font-medium">
                       閱讀更多 →
